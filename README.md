@@ -102,13 +102,6 @@ FinalDB.db
 └── CHICAGO_CRIME_DATA
 ```
 
-### Database Structure
-
-![Database Structure](database-structure.png)
-
-<!-- You can replace the image above with your own screenshot -->
-
----
 
 ## Python–SQLite Connection
 
@@ -136,7 +129,7 @@ df.to_sql(
 
 ---
 
-# 📈 SQL Analysis
+# SQL Analysis
 
 ## 1. Total Crime Records
 
@@ -339,7 +332,7 @@ This made it possible to query the data using SQL and maintain a structured rela
 
 ---
 
-# 💻 SQL Skills Demonstrated
+# SQL Skills Demonstrated
 
 This project includes practical use of:
 
@@ -390,7 +383,7 @@ FROM CHICAGO_CRIME_DATA;
 
 ---
 
-# 🐍 Python Skills Demonstrated
+#  Python Skills Demonstrated
 
 Through this project, I worked with:
 
