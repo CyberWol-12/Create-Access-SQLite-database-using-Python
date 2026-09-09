@@ -104,7 +104,7 @@ FinalDB.db
 
 ### Database Structure
 
-![Database Structure](screenshots/database-structure.png)
+![Database Structure](database-structure.png)
 
 <!-- You can replace the image above with your own screenshot -->
 
@@ -157,7 +157,7 @@ FROM CHICAGO_CRIME_DATA;
 
 ### Screenshot
 
-![Crime Count](screenshots/crime-count.png)
+![Crime Count](crime-count.png)
 
 ---
 
@@ -183,7 +183,7 @@ WHERE PER_CAPITA_INCOME < 11000;
 
 ### Screenshot
 
-![Income Analysis](screenshots/income-analysis.png)
+![Income Analysis](income-analysis.png)
 
 ---
 
