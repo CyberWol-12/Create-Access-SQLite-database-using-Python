@@ -8,7 +8,7 @@ The project follows a complete workflow:
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project combines three Chicago public datasets and stores them in a structured SQLite database.
 
@@ -25,7 +25,7 @@ The analysis was performed using **Jupyter Notebook**, with Pandas used for data
 
 ---
 
-## 📊 Datasets Used
+## Datasets Used
 
 | Dataset | Description |
 |---|---|
@@ -47,7 +47,7 @@ The analysis was performed using **Jupyter Notebook**, with Pandas used for data
 
 ![Chicago Schools Dataset](schools-dataset-preview.png)
 
-# 🔄 Project Workflow
+# Project Workflow
 
 ```text
 Chicago Public Datasets
@@ -82,7 +82,7 @@ Chicago Public Datasets
 
 ---
 
-# 🗄️ Database Design
+#  Database Design
 
 The SQLite database created for this project is:
 
@@ -110,7 +110,7 @@ FinalDB.db
 
 ---
 
-## 🐍 Python–SQLite Connection
+## Python–SQLite Connection
 
 Python's built-in `sqlite3` library was used to create and connect to the SQLite database.
 
@@ -206,11 +206,6 @@ HL266884
 HK238408
 ```
 
-### Screenshot
-
-![Minor Crime Analysis](screenshots/minor-crime-analysis.png)
-
----
 
 ## 4. Kidnapping Involving a Child
 
@@ -233,7 +228,7 @@ AND DESCRIPTION LIKE '%CHILD%';
 
 ### Screenshot
 
-![Kidnapping Analysis](screenshots/kidnapping-analysis.png)
+![Kidnapping Analysis](kidnapping-analysis.png)
 
 ---
 
@@ -260,7 +255,7 @@ WHERE LOCATION_DESCRIPTION LIKE '%SCHOOL%';
 
 ### Screenshot
 
-![School Crime Analysis](screenshots/school-crime-analysis.png)
+![School Crime Analysis](school-crime-analysis.png)
 
 ---
 
@@ -276,11 +271,11 @@ This provides information about the columns and structure of the table.
 
 ### Screenshot
 
-![School Table Structure](screenshots/school-table-structure.png)
+![School Table Structure](school-table-structure.png)
 
 ---
 
-# 📊 Key Results
+# Key Results
 
 | Analysis | Result |
 |---|---:|
@@ -293,7 +288,7 @@ This provides information about the columns and structure of the table.
 
 ---
 
-# 🧠 Key Insights
+#  Key Insights
 
 ## Socioeconomic Analysis
 
@@ -422,7 +417,7 @@ cur = conn.cursor()
 
 ---
 
-# 🛠️ Technology Stack
+# Technology Stack
 
 | Technology | Purpose |
 |---|---|
@@ -436,41 +431,41 @@ cur = conn.cursor()
 
 ---
 
-# 🖼️ Project Screenshots
+#  Project Screenshots
 
 You can add your own screenshots in this section.
 
 ## Jupyter Notebook
 
-![Jupyter Notebook](screenshots/jupyter-notebook.png)
+![Jupyter Notebook](jupyter-notebook.png)
 
 ## Database Tables
 
-![Database Tables](screenshots/database-tables.png)
+![Database Tables](database-tables.png)
 
 ## SQL Results
 
-![SQL Results](screenshots/sql-results.png)
+![SQL Results](sql-results.png)
 
 ## Database Structure
 
-![Database Structure](screenshots/database-structure.png)
+![Database Structure](columns-database.png)
 
 ## Crime Analysis
 
-![Crime Analysis](screenshots/crime-count.png)
+![Crime Analysis](crime-count.png)
 
 ## Socioeconomic Analysis
 
-![Socioeconomic Analysis](screenshots/income-analysis.png)
+![Socioeconomic Analysis](income-analysis.png)
 
 ## School Crime Analysis
 
-![School Crime Analysis](screenshots/school-crime-analysis.png)
+![School Crime Analysis](school-crime-analysis.png)
 
 ---
 
-# 📁 Project Structure
+# Project Structure
 
 ```text
 Create-Access-SQLite-database-using-Python/
@@ -504,7 +499,7 @@ Create-Access-SQLite-database-using-Python/
 
 ---
 
-# 🚀 How to Run the Project
+# How to Run the Project
 
 ## 1. Clone the Repository
 
@@ -540,7 +535,7 @@ Run the notebook cells sequentially to recreate the database and reproduce the a
 
 ---
 
-# 🎯 What This Project Demonstrates
+# What This Project Demonstrates
 
 This project demonstrates a complete data analysis workflow:
 
@@ -571,12 +566,10 @@ It demonstrates the ability to:
 
 ---
 
-# 🚀 Future Improvements
+# Future Improvements
 
 Possible extensions for this project include:
 
-- Building an interactive Power BI dashboard
-- Creating Tableau visualizations
 - Performing geographic crime analysis
 - Adding advanced SQL joins
 - Performing time-series crime analysis
@@ -587,21 +580,16 @@ Possible extensions for this project include:
 
 ---
 
-# 👩‍💻 About Me
+# About Me
 
 ## Divya Upadhyay
 
-**B.Tech Computer Science | Artificial Intelligence**
+Hi, I'm **Divya Upadhyay**, a final-year **B.Tech Computer Science student specializing in Artificial Intelligence**, with a strong interest in **Data Science, Machine Learning, and Data Analytics**.
 
-I am interested in:
-
-**Data Science • Machine Learning • Artificial Intelligence • Data Analytics • Python • SQL • Database Management**
-
-I enjoy working with real-world datasets and building practical projects that transform raw data into structured analysis and meaningful insights.
-
+I enjoy turning raw data into meaningful insights by combining **Python, SQL, Statistics, Machine Learning, and Data Visualization**. I have hands-on experience working with real-world datasets, performing **data cleaning, exploratory data analysis, SQL analysis, database management, and machine learning workflows**.
 ---
 
-# 📫 Connect With Me
+# Connect With Me
 
 - **GitHub:** https://github.com/CyberWol-12
 - **LinkedIn:** https://www.linkedin.com/in/divya-upadhyay-a77060348
@@ -609,7 +597,7 @@ I enjoy working with real-world datasets and building practical projects that tr
 
 ---
 
-# ⭐ Project
+# Project
 
 If you found this project interesting, feel free to explore the repository, notebook, database, and analysis.
 
