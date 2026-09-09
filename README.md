@@ -1,178 +1,112 @@
-````markdown
-# 🗄️ Chicago Data Analysis Using Python & SQLite
+# Chicago Data Analysis Using Python & SQLite
 
-<p align="center">
-  <strong>Python • Pandas • SQLite • SQL • Data Analysis</strong>
-</p>
+A practical data analysis project focused on exploring **Chicago crime, public school, and socioeconomic data** using Python, Pandas, SQL, and SQLite.
 
-<p align="center">
-  A practical data analysis project exploring Chicago crime, public school,
-  and socioeconomic datasets using Python and SQL.
-</p>
+The project follows a complete workflow:
+
+**Raw Data → Data Preparation → SQLite Database → SQL Analysis → Results → Insights**
 
 ---
 
 ## 📌 Project Overview
 
-This project demonstrates a practical **data analysis and database management workflow** using Python, Pandas, SQLite, and SQL.
+This project combines three Chicago public datasets and stores them in a structured SQLite database.
 
-Three Chicago public datasets are processed and analyzed:
+The main goal was to use **Python and SQL together** to investigate real-world analytical questions related to:
 
-- **Chicago Census Data** — socioeconomic and community-level information
-- **Chicago Public Schools Data** — school characteristics and performance-related information
-- **Chicago Crime Data** — crime records and incident details
+- Crime records
+- Socioeconomic conditions
+- Community income
+- Public schools
+- School-related crime
+- Crime records involving minors and children
 
-The datasets are loaded using **Pandas**, structured into a **SQLite database**, and analyzed using SQL queries to answer real-world analytical questions.
-
-### Project Workflow
-
-**Data Loading → Database Creation → SQL Analysis → Results → Insights**
-
----
-
-## 🎯 Objectives
-
-The main objectives of this project are to:
-
-- Create and manage a SQLite database using Python
-- Load CSV datasets into Pandas DataFrames
-- Convert DataFrames into relational database tables
-- Connect Python with SQLite
-- Execute SQL queries from a Jupyter Notebook
-- Analyze Chicago crime records
-- Identify communities with lower per-capita income
-- Analyze crimes involving minors and children
-- Identify crime types recorded at schools
-- Explore socioeconomic characteristics of Chicago communities
-- Practice real-world SQL data analysis techniques
+The analysis was performed using **Jupyter Notebook**, with Pandas used for data handling and SQLite used as the database layer.
 
 ---
 
-## 🗂️ Datasets
+## 📊 Datasets Used
 
-### 1. Chicago Census Data
-
-The Census dataset contains socioeconomic and demographic information about Chicago communities.
-
-**Key attributes include:**
-
-- `COMMUNITY_AREA_NUMBER`
-- `COMMUNITY_AREA_NAME`
-- `PERCENT_OF_HOUSING_CROWDED`
-- `PERCENT_HOUSEHOLDS_BELOW_POVERTY`
-- `PERCENT_AGED_16__UNEMPLOYED`
-- `PERCENT_AGED_25__WITHOUT_HIGH_SCHOOL_DIPLOMA`
-- `PERCENT_AGED_UNDER_18_OR_OVER_64`
-- `PER_CAPITA_INCOME`
-- `HARDSHIP_INDEX`
-
-### 2. Chicago Public Schools Data
-
-This dataset contains information about Chicago public schools.
-
-**Key attributes include:**
-
-- `School_ID`
-- `NAME_OF_SCHOOL`
-- `Elementary, Middle, or High School`
-- `SAFETY_SCORE`
-- `Environment_Score`
-- `Instruction_Score`
-- `Leaders_Score`
-- `AVERAGE_STUDENT_ATTENDANCE`
-- `Average_Teacher_Attendance`
-- `COMMUNITY_AREA_NUMBER`
-- `COMMUNITY_AREA_NAME`
-
-### 3. Chicago Crime Data
-
-This dataset contains information about reported crime incidents in Chicago.
-
-**Key attributes include:**
-
-- `ID`
-- `CASE_NUMBER`
-- `DATE`
-- `BLOCK`
-- `IUCR`
-- `PRIMARY_TYPE`
-- `DESCRIPTION`
-- `LOCATION_DESCRIPTION`
-- `ARREST`
-- `DOMESTIC`
-- `BEAT`
-- `DISTRICT`
-- `WARD`
-- `COMMUNITY_AREA_NUMBER`
-- `YEAR`
-- `LATITUDE`
-- `LONGITUDE`
-- `LOCATION`
-
----
-
-## 🛠️ Technology Stack
-
-| Technology | Purpose |
+| Dataset | Description |
 |---|---|
-| Python | Data processing and database integration |
-| Pandas | Data loading and DataFrame manipulation |
-| SQLite | Relational database management |
-| SQL | Data querying and analysis |
-| Jupyter Notebook | Interactive development and analysis |
-| PrettyTable | Formatting SQL query results |
-| IPython-SQL | Executing SQL queries inside Jupyter |
+| Chicago Census Data | Socioeconomic and community-level information |
+| Chicago Public Schools Data | Public school characteristics and related information |
+| Chicago Crime Data | Reported crime incidents and case details |
+
+### Dataset Preview
+
+<!-- Add your dataset screenshot here -->
+
+![Dataset Preview](screenshots/datasets-preview.png)
 
 ---
 
-## 🔄 Data Analysis Workflow
+# 🔄 Project Workflow
 
 ```text
-Raw CSV Datasets
-       │
-       ▼
-Load Data using Pandas
-       │
-       ▼
-Create SQLite Database
-       │
-       ▼
-Create Database Tables
-       │
-       ▼
-Connect SQLite with Jupyter
-       │
-       ▼
-Execute SQL Queries
-       │
-       ▼
-Analyze Query Results
-       │
-       ▼
-Extract Meaningful Insights
+Chicago Public Datasets
+          │
+          ▼
+       CSV Files
+          │
+          ▼
+   Pandas DataFrames
+          │
+          ▼
+   Data Preparation
+          │
+          ▼
+    SQLite Database
+          │
+     ┌────┼────┐
+     ▼    ▼    ▼
+  Census  Schools  Crime
+    Data    Data   Data
+     │      │      │
+     └──────┼──────┘
+            ▼
+       SQL Analysis
+            │
+            ▼
+       Query Results
+            │
+            ▼
+          Insights
 ```
 
 ---
 
-## 🗄️ Database Architecture
+# 🗄️ Database Design
 
-The project uses a SQLite database named:
+The SQLite database created for this project is:
 
-`FinalDB.db`
+```text
+FinalDB.db
+```
 
-The database contains three primary tables:
+It contains three primary tables:
 
 ```text
 FinalDB.db
 │
 ├── CENSUS_DATA
+│
 ├── CHICAGO_PUBLIC_SCHOOLS
+│
 └── CHICAGO_CRIME_DATA
 ```
 
-The tables are created by loading Pandas DataFrames into SQLite using `DataFrame.to_sql()`.
+### Database Structure
 
-### Python–SQLite Connection
+![Database Structure](screenshots/database-structure.png)
+
+<!-- You can replace the image above with your own screenshot -->
+
+---
+
+## 🐍 Python–SQLite Connection
+
+Python's built-in `sqlite3` library was used to create and connect to the SQLite database.
 
 ```python
 import pandas as pd
@@ -183,33 +117,56 @@ conn = sqlite3.connect("FinalDB.db")
 cur = conn.cursor()
 ```
 
+Pandas DataFrames were converted into SQL tables using `to_sql()`.
+
+```python
+df.to_sql(
+    "TABLE_NAME",
+    conn,
+    if_exists="replace",
+    index=False
+)
+```
+
 ---
 
-## 🔎 SQL Analysis
+# 📈 SQL Analysis
 
-The project uses SQL to answer a series of analytical questions based on the Chicago datasets.
+## 1. Total Crime Records
 
-### 1. Total Number of Crimes
+The crime dataset contains **533 records** in the analyzed dataset.
 
-**Result:** 533 crime records
+### SQL Query
 
 ```sql
 SELECT COUNT(*)
 FROM CHICAGO_CRIME_DATA;
 ```
 
+### Result
+
+```text
+533
+```
+
+### Screenshot
+
+![Crime Count](screenshots/crime-count.png)
+
 ---
 
-### 2. Communities with Per-Capita Income Below $11,000
+## 2. Communities With Per-Capita Income Below $11,000
 
-The analysis identifies four community areas with a per-capita income below `$11,000`.
+The analysis identified four community areas with a per-capita income below `$11,000`.
 
-| Community Area | Community Number |
+| Community | Community Number |
 |---|---:|
 | West Garfield Park | 26 |
 | South Lawndale | 30 |
 | Fuller Park | 37 |
 | Riverdale | 54 |
+
+### SQL Query
 
 ```sql
 SELECT COMMUNITY_AREA_NAME,
@@ -218,16 +175,17 @@ FROM CENSUS_DATA
 WHERE PER_CAPITA_INCOME < 11000;
 ```
 
+### Screenshot
+
+![Income Analysis](screenshots/income-analysis.png)
+
 ---
 
-### 3. Crimes Involving Minors
+## 3. Crime Records Involving Minors
 
-The query searches crime descriptions containing the term `MINOR`.
+Crime descriptions were searched for the term `MINOR`.
 
-**Resulting case numbers:**
-
-- `HL266884`
-- `HK238408`
+### SQL Query
 
 ```sql
 SELECT CASE_NUMBER
@@ -235,15 +193,24 @@ FROM CHICAGO_CRIME_DATA
 WHERE DESCRIPTION LIKE '%MINOR%';
 ```
 
+### Case Numbers Identified
+
+```text
+HL266884
+HK238408
+```
+
+### Screenshot
+
+![Minor Crime Analysis](screenshots/minor-crime-analysis.png)
+
 ---
 
-### 4. Kidnapping Crimes Involving a Child
+## 4. Kidnapping Involving a Child
 
-The analysis filters kidnapping records whose descriptions contain the term `CHILD`.
+The crime data was filtered for kidnapping records where the description contains `CHILD`.
 
-| Case Number | Crime Type | Description |
-|---|---|---|
-| HN144152 | KIDNAPPING | CHILD ABDUCTION/STRANGER |
+### SQL Query
 
 ```sql
 SELECT *
@@ -252,13 +219,31 @@ WHERE PRIMARY_TYPE = 'KIDNAPPING'
 AND DESCRIPTION LIKE '%CHILD%';
 ```
 
+### Result
+
+| Case Number | Crime Type | Description |
+|---|---|---|
+| HN144152 | KIDNAPPING | CHILD ABDUCTION/STRANGER |
+
+### Screenshot
+
+![Kidnapping Analysis](screenshots/kidnapping-analysis.png)
+
 ---
 
-### 5. Crime Types Recorded at Schools
+## 5. Crime Types Recorded at Schools
 
-The analysis identifies distinct crime categories associated with school locations.
+SQL pattern matching was used to identify crime records associated with school locations.
 
-**Crime types identified:**
+### SQL Query
+
+```sql
+SELECT DISTINCT PRIMARY_TYPE
+FROM CHICAGO_CRIME_DATA
+WHERE LOCATION_DESCRIPTION LIKE '%SCHOOL%';
+```
+
+### Crime Types Identified
 
 - BATTERY
 - CRIMINAL DAMAGE
@@ -267,44 +252,46 @@ The analysis identifies distinct crime categories associated with school locatio
 - CRIMINAL TRESPASS
 - PUBLIC PEACE VIOLATION
 
-```sql
-SELECT DISTINCT PRIMARY_TYPE
-FROM CHICAGO_CRIME_DATA
-WHERE LOCATION_DESCRIPTION LIKE '%SCHOOL%';
-```
+### Screenshot
+
+![School Crime Analysis](screenshots/school-crime-analysis.png)
 
 ---
 
-### 6. Exploring the School Database Structure
+## 6. Exploring the School Table Structure
 
-The structure of the `CHICAGO_PUBLIC_SCHOOLS` table is examined using SQLite metadata.
+SQLite metadata was used to inspect the structure of the public schools table.
 
 ```sql
 PRAGMA table_info(CHICAGO_PUBLIC_SCHOOLS);
 ```
 
-This provides information about the columns and structure of the school database table.
+This provides information about the columns and structure of the table.
+
+### Screenshot
+
+![School Table Structure](screenshots/school-table-structure.png)
 
 ---
 
-## 📈 Key Results
+# 📊 Key Results
 
-The analysis produced the following results:
-
-- **533** crime records are present in the analyzed crime dataset.
-- **4** community areas have a per-capita income below `$11,000`.
-- The identified minor-related case numbers are `HL266884` and `HK238408`.
-- One child-related kidnapping record was identified: `HN144152`.
-- Six distinct crime categories were identified at school locations.
-- The SQLite database successfully organizes the three datasets into separate relational tables.
+| Analysis | Result |
+|---|---:|
+| Crime records analyzed | **533** |
+| Communities below $11,000 per-capita income | **4** |
+| Minor-related case numbers identified | **2** |
+| Child-related kidnapping records identified | **1** |
+| Distinct crime categories at school locations | **6** |
+| SQLite tables created | **3** |
 
 ---
 
-## 💡 Key Insights
+# 🧠 Key Insights
 
-### Socioeconomic Analysis
+## Socioeconomic Analysis
 
-The Census dataset provides useful community-level indicators such as:
+The census dataset provides community-level indicators such as:
 
 - Per-capita income
 - Poverty
@@ -313,11 +300,13 @@ The Census dataset provides useful community-level indicators such as:
 - Housing conditions
 - Hardship index
 
-These variables can be used to understand socioeconomic differences between Chicago communities.
+These variables can be used to compare socioeconomic conditions across different Chicago communities.
 
-### Crime Analysis
+---
 
-SQL filtering and pattern matching make it possible to isolate specific crime categories and descriptions.
+## Crime Analysis
+
+SQL filtering and pattern matching were used to isolate specific crime records.
 
 For example:
 
@@ -325,66 +314,101 @@ For example:
 WHERE DESCRIPTION LIKE '%MINOR%'
 ```
 
-can be used to identify records related to minors.
+This condition searches crime descriptions for references to minors.
 
-### School-Related Crime Analysis
+---
 
-Using:
+## School-Related Crime
+
+The following SQL condition was used to identify records associated with school locations:
 
 ```sql
 WHERE LOCATION_DESCRIPTION LIKE '%SCHOOL%'
 ```
 
-allows the analysis to identify different crime categories associated with school locations.
-
-### Database Organization
-
-Storing the datasets in SQLite provides a structured environment for querying and analyzing multiple datasets rather than repeatedly working with raw CSV files.
+This helped identify the different crime categories appearing in school-related locations.
 
 ---
 
-## 🧠 SQL Concepts Demonstrated
+## Database Management
 
-This project provides hands-on practice with:
+The three datasets were organized into a SQLite database instead of being analyzed only as separate CSV files.
 
-- `SELECT`
-- `WHERE`
-- `LIKE`
-- `DISTINCT`
-- `COUNT()`
-- `AVG()`
-- `MAX()`
-- `GROUP BY`
-- `ORDER BY`
-- `LIMIT`
-- Subqueries
-- `PRAGMA`
-- SQLite metadata
-- Filtering
-- Aggregation
-- Relational data analysis
+This made it possible to query the data using SQL and maintain a structured relational data environment.
 
 ---
 
-## 🐍 Python Concepts Demonstrated
+# 💻 SQL Skills Demonstrated
 
-The project also demonstrates:
+This project includes practical use of:
 
-- Python programming
-- Pandas DataFrames
-- CSV data loading
-- SQLite database connections
-- SQLite cursors
+```text
+SELECT
+WHERE
+LIKE
+DISTINCT
+COUNT()
+AVG()
+MAX()
+GROUP BY
+ORDER BY
+LIMIT
+Subqueries
+PRAGMA
+```
+
+### Filtering
+
+```sql
+SELECT *
+FROM CENSUS_DATA
+WHERE PER_CAPITA_INCOME < 11000;
+```
+
+### Pattern Matching
+
+```sql
+SELECT *
+FROM CHICAGO_CRIME_DATA
+WHERE DESCRIPTION LIKE '%MINOR%';
+```
+
+### Counting Records
+
+```sql
+SELECT COUNT(*)
+FROM CHICAGO_CRIME_DATA;
+```
+
+### Distinct Values
+
+```sql
+SELECT DISTINCT PRIMARY_TYPE
+FROM CHICAGO_CRIME_DATA;
+```
+
+---
+
+# 🐍 Python Skills Demonstrated
+
+Through this project, I worked with:
+
+- Python
+- Pandas
+- DataFrames
+- CSV files
+- Data preparation
+- SQLite
+- SQL queries
+- Database connections
+- Jupyter Notebook
 - DataFrame-to-SQL conversion
-- SQL execution from Python
-- Jupyter Notebook integration
 
-Example:
+### Example Database Connection
 
 ```python
 import pandas as pd
 import sqlite3
-import csv
 
 conn = sqlite3.connect("FinalDB.db")
 cur = conn.cursor()
@@ -392,110 +416,79 @@ cur = conn.cursor()
 
 ---
 
-## 📸 Screenshots
+# 🛠️ Technology Stack
 
-Screenshots can be added here to demonstrate the project workflow and SQL results.
+| Technology | Purpose |
+|---|---|
+| Python | Data processing and database integration |
+| Pandas | Data loading and DataFrame manipulation |
+| SQL | Data querying and analysis |
+| SQLite | Relational database management |
+| Jupyter Notebook | Interactive analysis |
+| PrettyTable | Query result formatting |
+| IPython-SQL | Running SQL inside Jupyter |
 
-Recommended screenshots:
+---
 
-```text
-screenshots/
-├── database-tables.png
-├── sql-results.png
-├── jupyter-notebook.png
-└── database-structure.png
-```
+# 🖼️ Project Screenshots
 
-Example:
+You can add your own screenshots in this section.
 
-```markdown
+## Jupyter Notebook
+
+![Jupyter Notebook](screenshots/jupyter-notebook.png)
+
+## Database Tables
+
 ![Database Tables](screenshots/database-tables.png)
+
+## SQL Results
 
 ![SQL Results](screenshots/sql-results.png)
 
-![Jupyter Notebook](screenshots/jupyter-notebook.png)
-```
+## Database Structure
 
-> Replace the placeholder image paths with the actual screenshot files available in the repository.
+![Database Structure](screenshots/database-structure.png)
 
----
+## Crime Analysis
 
-## 📊 Project Presentation
+![Crime Analysis](screenshots/crime-count.png)
 
-A presentation can be included to provide a visual overview of the project.
+## Socioeconomic Analysis
 
-Recommended structure:
+![Socioeconomic Analysis](screenshots/income-analysis.png)
 
-```text
-presentation/
-└── Chicago_Data_Analysis_SQL.pptx
-```
+## School Crime Analysis
 
-If the presentation is added to the repository, it can be linked here:
-
-```markdown
-[📊 View Project Presentation](presentation/Chicago_Data_Analysis_SQL.pptx)
-```
+![School Crime Analysis](screenshots/school-crime-analysis.png)
 
 ---
 
-## 💻 How to Run the Project
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/CyberWol-12/Create-Access-SQLite-database-using-Python.git
-```
-
-### 2. Navigate to the Project Directory
-
-```bash
-cd Create-Access-SQLite-database-using-Python
-```
-
-### 3. Install Required Libraries
-
-```bash
-pip install pandas
-pip install ipython-sql
-pip install prettytable
-```
-
-### 4. Launch Jupyter Notebook
-
-```bash
-jupyter notebook
-```
-
-### 5. Run the Notebook
-
-Open:
-
-```text
-final_project.ipynb
-```
-
-Run the notebook cells sequentially to reproduce the database creation and analysis.
-
----
-
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```text
 Create-Access-SQLite-database-using-Python/
 │
 ├── final_project.ipynb
 ├── FinalDB.db
+│
 ├── data/
 │   ├── ChicagoCensusData.csv
 │   ├── ChicagoPublicSchools.csv
 │   └── ChicagoCrimeData.csv
 │
 ├── screenshots/
+│   ├── datasets-preview.png
+│   ├── database-structure.png
 │   ├── database-tables.png
-│   ├── sql-results.png
 │   ├── jupyter-notebook.png
-│   └── database-structure.png
+│   ├── sql-results.png
+│   ├── crime-count.png
+│   ├── income-analysis.png
+│   ├── minor-crime-analysis.png
+│   ├── kidnapping-analysis.png
+│   ├── school-crime-analysis.png
+│   └── school-table-structure.png
 │
 ├── presentation/
 │   └── Chicago_Data_Analysis_SQL.pptx
@@ -503,161 +496,117 @@ Create-Access-SQLite-database-using-Python/
 └── README.md
 ```
 
-> Update the structure above if the repository contains different folders or filenames.
+---
+
+# 🚀 How to Run the Project
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/CyberWol-12/Create-Access-SQLite-database-using-Python.git
+```
+
+## 2. Navigate to the Project
+
+```bash
+cd Create-Access-SQLite-database-using-Python
+```
+
+## 3. Install Dependencies
+
+```bash
+pip install pandas ipython-sql prettytable
+```
+
+## 4. Launch Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+## 5. Open the Notebook
+
+```text
+final_project.ipynb
+```
+
+Run the notebook cells sequentially to recreate the database and reproduce the analysis.
 
 ---
 
-## 🧠 Skills Demonstrated
+# 🎯 What This Project Demonstrates
 
-### Programming
+This project demonstrates a complete data analysis workflow:
 
-- Python
-- Pandas
-- Jupyter Notebook
+```text
+Data Ingestion
+      ↓
+Data Preparation
+      ↓
+Database Creation
+      ↓
+SQL Querying
+      ↓
+Data Analysis
+      ↓
+Result Interpretation
+```
 
-### Database
+It demonstrates the ability to:
 
-- SQLite
-- Database creation
-- Table creation
-- Python–SQLite integration
-- Relational data management
-
-### SQL
-
-- Data filtering
-- Aggregation
-- Pattern matching
-- Sorting
-- Grouping
-- Subqueries
-- Database metadata
-- Analytical querying
-
-### Data Analysis
-
-- Crime data analysis
-- Socioeconomic analysis
-- Community-level analysis
-- School-related data analysis
-- Real-world dataset exploration
-
-### Problem Solving
-
-- Translating analytical questions into SQL queries
-- Working with multiple datasets
-- Structuring data for analysis
-- Interpreting query results
-- Extracting meaningful information from public datasets
+- Work with multiple real-world datasets
+- Load and prepare data using Python
+- Build a relational SQLite database
+- Write SQL queries for analytical questions
+- Combine Python and SQL in one workflow
+- Analyze structured datasets
+- Interpret query results
+- Organize data for repeatable analysis
 
 ---
 
-## 🚀 Future Improvements
+# 🚀 Future Improvements
 
-The project can be further extended with:
+Possible extensions for this project include:
 
-- Interactive dashboards using Power BI or Tableau
-- Data visualizations using Matplotlib or Plotly
-- Geographic crime visualization
-- Advanced SQL joins across datasets
-- Time-series crime analysis
-- Deeper school safety analysis
-- Socioeconomic comparison dashboards
-- Machine Learning-based crime prediction
-- Web-based analytical dashboard
-- Automated SQL reporting
-
----
-
-## 🎓 Learning Outcomes
-
-Through this project, I gained practical experience in:
-
-- Creating SQLite databases programmatically
-- Working with Pandas DataFrames
-- Converting DataFrames into SQL tables
-- Writing analytical SQL queries
-- Filtering and aggregating real-world data
-- Executing SQL inside Jupyter Notebook
-- Working with multiple public datasets
-- Translating business-style questions into SQL solutions
-- Extracting insights from structured data
+- Building an interactive Power BI dashboard
+- Creating Tableau visualizations
+- Performing geographic crime analysis
+- Adding advanced SQL joins
+- Performing time-series crime analysis
+- Exploring school safety trends
+- Creating socioeconomic comparison dashboards
+- Automating SQL reports
+- Applying machine learning techniques to relevant datasets
 
 ---
 
-## 👩‍💻 About Me
+# 👩‍💻 About Me
 
-I'm **Divya Upadhyay**, a final-year **B.Tech Computer Science student specializing in Artificial Intelligence**, with a strong interest in **Data Science, Machine Learning, Artificial Intelligence, and Data Analytics**.
+## Divya Upadhyay
 
-I enjoy working with real-world datasets and building projects that combine programming, data analysis, SQL, and machine learning to solve practical problems.
+**B.Tech Computer Science | Artificial Intelligence**
 
-### Areas of Interest
+I am interested in:
 
-- Data Science
-- Machine Learning
-- Artificial Intelligence
-- Data Analytics
-- Python
-- SQL
-- Database Management
+**Data Science • Machine Learning • Artificial Intelligence • Data Analytics • Python • SQL • Database Management**
 
-I am continuously building practical projects and strengthening my technical skills to pursue opportunities in **Data Science, Machine Learning, and AI**.
+I enjoy working with real-world datasets and building practical projects that transform raw data into structured analysis and meaningful insights.
 
 ---
 
-## 📬 Connect With Me
+# 📫 Connect With Me
 
-### 💻 GitHub
-
-[GitHub Profile](https://github.com/CyberWol-12)
-
-### 💼 LinkedIn
-
-[LinkedIn Profile](https://www.linkedin.com/in/divya-upadhyay-a77060348)
-
-### 📧 Email
-
-**divyau0802@gmail.com**
+- **GitHub:** https://github.com/CyberWol-12
+- **LinkedIn:** https://www.linkedin.com/in/divya-upadhyay-a77060348
+- **Email:** divyau0802@gmail.com
 
 ---
 
-## ⭐ Conclusion
+# ⭐ Project
 
-The **Chicago Data Analysis Using Python & SQLite** project demonstrates an end-to-end approach to working with structured public datasets.
-
-By combining **Python, Pandas, SQLite, and SQL**, the project transforms raw Chicago datasets into structured database tables and uses analytical queries to investigate crime, socioeconomic conditions, community characteristics, and school-related information.
-
-The project demonstrates practical skills in:
-
-- Python Programming
-- Pandas
-- SQLite
-- SQL
-- Data Analysis
-- Database Management
-- Analytical Problem Solving
-- Real-World Dataset Analysis
-
-Most importantly, the project demonstrates the ability to translate real-world analytical questions into **structured SQL queries** and extract meaningful information from data.
+If you found this project interesting, feel free to explore the repository, notebook, database, and analysis.
 
 ---
 
-## ⭐ If You Found This Project Useful
-
-If you found this project interesting or useful:
-
-- ⭐ Star the repository
-- 👀 Explore the notebook
-- 💬 Connect with me
-- 🤝 Collaborate on future data science projects
-
-<p align="center">
-
-**Python • Pandas • SQLite • SQL • Data Analysis**
-
-<br>
-
-<strong>Built with curiosity, data, and code. 🚀</strong>
-
-</p>
-````
+**Built with Python, SQL, SQLite, and curiosity.**
