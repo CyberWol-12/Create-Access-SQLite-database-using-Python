@@ -35,11 +35,17 @@ The analysis was performed using **Jupyter Notebook**, with Pandas used for data
 
 ### Dataset Preview
 
-<!-- Add your dataset screenshot here -->
+### Chicago Crime Data
 
-![Dataset Preview](screenshots/datasets-preview.png)
+![Chicago Crime Dataset](screenshots/crime-dataset-preview.png)
 
----
+### Chicago Census Data
+
+![Chicago Census Dataset](screenshots/census-dataset-preview.png)
+
+### Chicago Public Schools Data
+
+![Chicago Schools Dataset](screenshots/schools-dataset-preview.png)
 
 # 🔄 Project Workflow
 
